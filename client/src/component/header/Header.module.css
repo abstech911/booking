@@ -11,6 +11,9 @@
     max-width: 1024px;
     margin: 1.2rem 0 3rem 0;
 }
+.headerContainerMargin{
+    margin: 1rem 0  1rem 0;
+}
 
 @media screen and (max-width: 768px) {
     .headerContainer {
@@ -200,6 +203,9 @@
     border-radius: .2rem;
     cursor: pointer;
 
+}
+.optionCounterButton:disabled{
+    background-color: rgba(0, 53, 128, 0.5);
 }
 .optionCounterNumber{
     padding: .3rem .9rem;

@@ -4,8 +4,6 @@ import React from "react";
 import Home from "./pages/home/Home";
 import List from "./pages/list/List";
 import Hotel from "./pages/hotel/Hotel";
-import Navbar from "./component/navbar/Navbar";
-import Header from "./component/header/Header";
 
 const App = () => {
 
@@ -19,8 +17,6 @@ const App = () => {
     if (!router) return null;
     return (
         <main>
-            <Navbar/>
-            <Header/>
 
             <AnimatePresence mode='wait'>
                 {React.cloneElement(router, {key: location.pathname})}
