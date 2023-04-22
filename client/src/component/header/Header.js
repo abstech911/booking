@@ -134,7 +134,7 @@ const Header = (props) => {
                 </button>
             </Modal>
             <div className={styles.header}>
-                <div className={`${styles.headerContainer} ${styles.headerContainerMargin}`}>
+                <div className={`${styles.headerContainer}  ${props.list ? styles.headerContainerMargin : ''} `}>
                     <div className={styles.headerList}>
                         <div className={`${styles.headerListItem} ${styles.active}`}>
                             <FontAwesomeIcon icon={faBed}/>
