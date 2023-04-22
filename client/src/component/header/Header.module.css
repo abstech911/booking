@@ -78,6 +78,7 @@
     padding: .4rem .6rem;
 
 }
+
 .btnColorRed {
     background-color: #dc0404;
     color: white;
@@ -106,8 +107,12 @@
 @media screen and (max-width: 768px) {
     .headerSearch {
         flex-direction: column;
-        gap: .5rem;
+        gap: .8rem;
         align-items: flex-start;
+        color: grey;
+        font-size: .9rem;
+        padding: 1rem .7rem;
+        border-radius: .2rem;
 
     }
 }
@@ -125,18 +130,20 @@
         align-items: center;
         justify-content: flex-start;
         gap: 1rem;
+        width: 100%;
     }
 }
 
 .headerIcon {
     width: 1.2rem;
     height: auto;
+    color: #808080;
 }
 
 @media screen and (max-width: 768px) {
     .headerIcon {
         width: .8rem;
-        height: auto;
+        color: #808080;
     }
 }
 
@@ -145,8 +152,12 @@
     outline: none;
     padding: .5rem .4rem;
     border: 0.05rem solid rgba(0, 0, 0, 0.1);
+}
 
-
+@media screen and (max-width: 768px) {
+    .headerSearchInput {
+        flex: 1;
+    }
 }
 
 .headerSearchInput:focus {
@@ -162,4 +173,42 @@
     .headerSearchText {
         flex: 1;
     }
+}
+
+.options{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+    margin: 1rem  0;
+}
+.optionItem{
+    display: flex;
+    justify-content: space-around;
+    flex: 1;
+}
+.optionText{
+    flex: 1;
+}
+.optionCounterButton{
+    padding: .3rem .7rem;
+    border: none;
+    outline: 0.05rem solid rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    background-color: #003580;
+    color: white;
+    border-radius: .2rem;
+    cursor: pointer;
+
+}
+.optionCounterNumber{
+    padding: .3rem .9rem;
+    outline: 0.05rem solid rgba(0, 0, 0, 0.1);
+    border-radius: .3rem;
+
+}
+.control{
+    flex: 3;
+    display: flex;
+    justify-content: space-evenly;
 }

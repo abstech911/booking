@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi} from "@fortawesome/free-solid-svg-icons";
 import Modal from "../modal/Modal";
 import DateRange from "react-date-range/dist/components/DateRange";
-import {addDays} from "date-fns";
+import {addDays, format} from "date-fns";
 
 const Header = () => {
 
@@ -12,16 +12,117 @@ const Header = () => {
     const [state, setState] = useState([
         {
             startDate: new Date(),
-            endDate: null,
+            endDate: new Date(),
             key: 'selection'
         }
     ]);
 
 
+    const [openOptions, setOpenOptions] = useState(false);
+    const [options, setOptions] = useState({
+        adult: 1,
+        children: 1,
+        room: 1,
+    });
+
+
+
+    const decreaseOption = (e, name) => {
+        const optionKeys = Object.keys(options);
+        const optionValues = Object.values(options);
+
+        const keyIndex = optionKeys.findIndex(value => value === name);
+        const value = optionValues[keyIndex];
+        if ((value - 1) < 0) {
+            //    show warning
+            alert("Can't go below zero")
+        } else {
+
+            setOptions((prevState) => {
+                const newState = {
+                    ...prevState
+                }
+                newState[name] = value - 1;
+                return newState;
+            });
+
+        }
+    }
+    const increaseOption = (e, name) => {
+        const optionKeys = Object.keys(options);
+        const optionValues = Object.values(options);
+
+        const keyIndex = optionKeys.findIndex(value => value === name);
+        const value = optionValues[keyIndex];
+        if ((value + 1) > 10) {
+            //    show warning
+            alert("Can't go above 10")
+        } else {
+
+            setOptions((prevState) => {
+                const newState = {
+                    ...prevState
+                }
+                newState[name] = value + 1;
+                return newState;
+            });
+
+        }
+    }
+
     return (
         <>
 
-            <Modal value={[modal, setModal]} >
+            <Modal value={[openOptions, setOpenOptions]}>
+
+                <div className={styles.options}>
+                    <div className={styles.optionItem}>
+                        <span className={styles.optionText}>Adult</span>
+                        <div className={styles.control}>
+                            <button className={styles.optionCounterButton}
+                                    onClick={(e) => decreaseOption(e, "adult")}>-
+                            </button>
+                            <span className={styles.optionCounterNumber}>{options.adult}</span>
+                            <button className={styles.optionCounterButton}
+                                    onClick={(e) => increaseOption(e, "adult")}>+
+                            </button>
+                        </div>
+
+                    </div>
+                    <div className={styles.optionItem}>
+                        <span className={styles.optionText}>Children</span>
+                        <div className={styles.control}>
+                            <button className={styles.optionCounterButton}
+                                    onClick={(e) => decreaseOption(e, "children")}>-
+                            </button>
+                            <span className={styles.optionCounterNumber}>{options.children}</span>
+                            <button className={styles.optionCounterButton}
+                                    onClick={(e) => increaseOption(e, "children")}>+
+                            </button>
+                        </div>
+
+                    </div>
+                    <div className={styles.optionItem}>
+                        <span className={styles.optionText}>Room</span>
+                        <div className={styles.control}>
+                            <button className={styles.optionCounterButton}
+                                    onClick={(e) => decreaseOption(e, "room")}>-
+                            </button>
+                            <span className={styles.optionCounterNumber}>{options.room}</span>
+                            <button className={styles.optionCounterButton}
+                                    onClick={(e) => increaseOption(e, "room")}>+
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <button type='button' onClick={() => setOpenOptions(false)}
+                        className={`${styles.headerButton} ${styles.btnColorRed}`}>close
+                </button>
+            </Modal>
+
+            <Modal value={[modal, setModal]}>
 
                 <DateRange
                     editableDateInputs={true}
@@ -31,7 +132,9 @@ const Header = () => {
                     ranges={state}
                     className={styles.date}
                 />
-                <button type='button' onClick={()=> setModal(false)} className={`${styles.headerButton} ${styles.btnColorRed}`}>close</button>
+                <button type='button' onClick={() => setModal(false)}
+                        className={`${styles.headerButton} ${styles.btnColorRed}`}>close
+                </button>
             </Modal>
             <div className={styles.header}>
                 <div className={styles.headerContainer}>
@@ -75,13 +178,14 @@ const Header = () => {
                         </div>
                         <div className={styles.headerSearchItem}>
                             <FontAwesomeIcon icon={faCalendarDays} className={styles.headerIcon}/>
-                            <span className={styles.headerSearchText} onClick={()=> setModal(true)}>date to date</span>
+                            <span className={styles.headerSearchText}
+                                  onClick={() => setModal(true)}>{`${format(state[0].startDate, "dd/MM/yyyy")} to ${format(state[0].endDate, "dd/MM/yyyy")} `}</span>
                             {/*<Calendar date={new Date()} onChange={handleDateChange}   />*/}
                         </div>
                         <div className={styles.headerSearchItem}>
                             <FontAwesomeIcon icon={faPerson} className={styles.headerIcon}/>
-                            <span className={styles.headerSearchText}>
-                            1adult 2 children 1room
+                            <span onClick={() => setOpenOptions(true)} className={styles.headerSearchText}>
+                            {`${options.adult} adults ${options.children} children ${options.room} room `}
                         </span>
                         </div>
                         <div className={styles.headerSearchItem}>
