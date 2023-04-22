@@ -1,0 +1,165 @@
+.header {
+    background-color: #003580;
+    color: white;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.headerContainer {
+    width: 95%;
+    max-width: 1024px;
+    margin: 1.2rem 0 3rem 0;
+}
+
+@media screen and (max-width: 768px) {
+    .headerContainer {
+        margin: 1.2rem 0 5rem 0;
+    }
+}
+
+.headerList {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+@media screen and (max-width: 768px) {
+    .headerList {
+        justify-content: center;
+    }
+}
+
+.headerListItem {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+
+}
+
+.headerListItem span {
+    font-size: .8rem;
+}
+
+.active {
+    padding: .6rem .4rem;
+    border: 0.05rem solid rgba(255, 255, 255, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    border-radius: .4rem;
+}
+
+.headerTitle {
+    margin: 1.5rem 0;
+}
+
+.headerDescription {
+    margin: .5rem 0;
+    font-size: 1rem;
+    font-weight: 200;
+}
+
+.headerButton {
+    margin: .5rem 0;
+    outline: none;
+    padding: .6rem .4rem;
+    border: 0.05rem solid rgba(255, 255, 255, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    background-color: whitesmoke;
+    border-radius: .2rem;
+    color: #003580;
+    font-weight: 300;
+}
+
+.btnColorGreen {
+    background-color: #003580;
+    color: white;
+    align-self: center;
+    padding: .4rem .6rem;
+
+}
+.btnColorRed {
+    background-color: #dc0404;
+    color: white;
+    align-self: center;
+    padding: .4rem .6rem;
+
+}
+
+.headerSearch {
+    background-color: white;
+    border: 0.05rem solid rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem .5rem;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    width: 90%;
+    max-width: 1024px;
+}
+
+@media screen and (max-width: 768px) {
+    .headerSearch {
+        flex-direction: column;
+        gap: .5rem;
+        align-items: flex-start;
+
+    }
+}
+
+.headerSearchItem {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .headerSearchItem {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+}
+
+.headerIcon {
+    width: 1.2rem;
+    height: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .headerIcon {
+        width: .8rem;
+        height: auto;
+    }
+}
+
+.headerSearchInput {
+    margin: 0;
+    outline: none;
+    padding: .5rem .4rem;
+    border: 0.05rem solid rgba(0, 0, 0, 0.1);
+
+
+}
+
+.headerSearchInput:focus {
+    border: 0.05rem solid rgba(0, 0, 0, 0.5);
+    border-radius: .4rem;
+
+}
+
+.headerSearchText {
+}
+
+@media screen and (max-width: 768px) {
+    .headerSearchText {
+        flex: 1;
+    }
+}

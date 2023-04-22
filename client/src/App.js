@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import {useLocation, useRoutes} from "react-router-dom";
+import {AnimatePresence} from "framer-motion";
+import React from "react";
+import Home from "./pages/home/Home";
+import List from "./pages/list/List";
+import Hotel from "./pages/hotel/Hotel";
+import Navbar from "./component/navbar/Navbar";
+import Header from "./component/header/Header";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+
+    const router = useRoutes([
+        {path: "/", element: <Home/>},
+        {path: "/hotels", element: <List/>},
+        {path: "/hotel", element: <Hotel/>}
+    ])
+    const location = useLocation();
+
+    if (!router) return null;
+    return (
+        <main>
+            <Navbar/>
+            <Header/>
+
+            <AnimatePresence mode='wait'>
+                {React.cloneElement(router, {key: location.pathname})}
+            </AnimatePresence>
+        </main>
+    );
 }
 
 export default App;
+
+
