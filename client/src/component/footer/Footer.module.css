@@ -1,0 +1,35 @@
+.footer{
+    width: 100%;
+    font-size: .8rem;
+    background-color: rgba(0,53,125,1);
+    padding: 1rem 2rem;
+    color: white;
+    filter: drop-shadow(0 0 0.3rem white);
+    box-shadow: rgba(0, 53, 128, 0.8) 0 4px 12px;
+    text-align: center;
+}
+.fLists{
+    display: flex;
+    justify-content: space-between;
+    max-width: 1024px;
+    margin: auto;
+}
+@media screen and (max-width: 768px) {
+    .fLists{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 2rem;
+
+    }
+
+}
+
+.fList{
+    flex:1;
+}
+.fListItem{}
+.fText{
+    margin: 2rem;
+    text-align: center;
+    color: white;
+}

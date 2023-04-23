@@ -10,6 +10,7 @@ import Modal from "../../component/modal/Modal";
 import DateRange from "react-date-range/dist/components/DateRange";
 import {addDays} from "date-fns";
 import extend from '../../component/header/Header.module.css'
+import {Footer} from "../../component/footer/Footer";
 
 const Home = () => {
     const [modal, setModal] = useState(false);
@@ -150,6 +151,7 @@ const Home = () => {
                 <FavoriteProperty/>
                 <MailList/>
             </div>
+            <Footer />
 
         </>
     )
