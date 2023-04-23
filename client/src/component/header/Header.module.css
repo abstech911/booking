@@ -11,6 +11,11 @@
     max-width: 1024px;
     margin: 1.2rem 0 3rem 0;
 }
+@media screen and (min-width: 200px) and (max-width: 500px)  {
+    .headerContainer{
+        text-align: center;
+    }
+}
 .headerContainerMargin{
     margin: 1rem 0  1rem 0;
 }
@@ -55,6 +60,7 @@
 .headerTitle {
     margin: 1.5rem 0;
 }
+
 
 .headerDescription {
     margin: .5rem 0;

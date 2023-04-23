@@ -9,3 +9,13 @@
         margin: 9rem 0 0;
     }
 }
+.homeTitle{
+    align-self: flex-start;
+    margin: 0 2.5rem;
+}
+@media screen and (max-width: 768px) {
+    .homeTitle {
+        font-size: 1.5rem;
+        align-self: center;
+    }
+}

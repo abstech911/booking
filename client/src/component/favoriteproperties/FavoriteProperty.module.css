@@ -1,0 +1,57 @@
+.fp{
+    width: 90%;
+    display: flex;
+    gap: 1.2rem;
+    justify-content: space-between;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+.fpItem{
+    flex: 1;
+    background-color: white;
+    border: 0.02rem solid rgba(0, 53, 128, .2);
+    box-shadow: rgba(0, 53, 128, 0.1) 0 4px 12px;
+    border-radius: .5rem .5rem 0 0;
+}
+
+.fpImg{
+    width: 100%;
+    object-fit: cover;
+    border-radius: .5rem .5rem 0 0;
+    overflow: hidden;
+}
+.fpItem >span{
+    display: block;
+    padding: .1rem .5rem;
+}
+
+.fpName{
+    font-weight: bold;
+}
+.fpCity{
+    font-weight: 300;
+}
+.fpPrice{
+    color: crimson;
+    font-weight: 500;
+}
+
+.fpRating{
+    padding: .3rem .5rem 1rem;
+    display: flex;
+    gap: .2rem;
+    align-items: center;
+}
+.fpRating button{
+    background-color: #003580;
+    color: white;
+    outline: none;
+    border: 0.05rem solid rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    padding: .2rem .5rem;
+    border-radius: .4rem;
+
+}
+.fpRating span{
+    font-weight: bolder;
+}
