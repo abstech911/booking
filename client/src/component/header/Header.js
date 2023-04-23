@@ -1,138 +1,26 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styles from './Header.module.css'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi} from "@fortawesome/free-solid-svg-icons";
-import Modal from "../modal/Modal";
-import DateRange from "react-date-range/dist/components/DateRange";
-import {addDays, format} from "date-fns";
+import {format} from "date-fns";
 
 const Header = (props) => {
 
-    const [modal, setModal] = useState(false);
-    const [state, setState] = useState([
-        {
-            startDate: new Date(),
-            endDate: new Date(),
-            key: 'selection'
-        }
-    ]);
+    // eslint-disable-next-line
+    const [modal, setModal] = props.dateModalControl;
+    //eslint-disable-next-line
+    const [state, setState] = props.dateModalState
 
 
-    const [openOptions, setOpenOptions] = useState(false);
-    const [options, setOptions] = useState({
-        adult: 1,
-        children: 1,
-        room: 1,
-    });
+    // eslint-disable-next-line
+    const [openOptions, setOpenOptions] = props.optionControl;
 
+    // eslint-disable-next-line
+    const [options, setOptions] = props.optionState;
 
-    const decreaseOption = (e, name) => {
-        const optionKeys = Object.keys(options);
-        const optionValues = Object.values(options);
-
-        const keyIndex = optionKeys.findIndex(value => value === name);
-        const value = optionValues[keyIndex];
-        if ((value - 1) < 0) {
-            //    show warning
-            alert("Can't go below zero")
-        } else {
-            setOptions((prevState) => {
-                return {...prevState, [name]: value - 1}
-            });
-
-        }
-    }
-    const increaseOption = (e, name) => {
-        const optionKeys = Object.keys(options);
-        const optionValues = Object.values(options);
-
-        const keyIndex = optionKeys.findIndex(value => value === name);
-        const value = optionValues[keyIndex];
-        if ((value + 1) > 10) {
-            //    show warning
-            alert("Can't go above 10")
-        } else {
-
-            setOptions((prevState) => {
-                const newState = {
-                    ...prevState
-                }
-                newState[name] = value + 1;
-                return newState;
-            });
-
-        }
-    }
 
     return (
         <>
-
-            <Modal value={[openOptions, setOpenOptions]}>
-
-                <div className={styles.options}>
-                    <div className={styles.optionItem}>
-                        <span className={styles.optionText}>Adult</span>
-                        <div className={styles.control}>
-                            <button className={styles.optionCounterButton}
-                                    disabled={options.children <= 1}
-                                    onClick={(e) => decreaseOption(e, "adult")}>-
-                            </button>
-                            <span className={styles.optionCounterNumber}>{options.adult}</span>
-                            <button className={styles.optionCounterButton}
-                                    onClick={(e) => increaseOption(e, "adult")}>+
-                            </button>
-                        </div>
-
-                    </div>
-                    <div className={styles.optionItem}>
-                        <span className={styles.optionText}>Children</span>
-                        <div className={styles.control}>
-                            <button className={styles.optionCounterButton}
-                                    disabled={options.children <= 0}
-                                    onClick={(e) => decreaseOption(e, "children")}>-
-                            </button>
-                            <span className={styles.optionCounterNumber}>{options.children}</span>
-                            <button className={styles.optionCounterButton}
-                                    onClick={(e) => increaseOption(e, "children")}>+
-                            </button>
-                        </div>
-
-                    </div>
-                    <div className={styles.optionItem}>
-                        <span className={styles.optionText}>Room</span>
-                        <div className={styles.control}>
-                            <button className={styles.optionCounterButton}
-                                    disabled={options.children <= 1}
-                                    onClick={(e) => decreaseOption(e, "room")}>-
-                            </button>
-                            <span className={styles.optionCounterNumber}>{options.room}</span>
-                            <button className={styles.optionCounterButton}
-                                    onClick={(e) => increaseOption(e, "room")}>+
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-
-                <button type='button' onClick={() => setOpenOptions(false)}
-                        className={`${styles.headerButton} ${styles.btnColorRed}`}>close
-                </button>
-            </Modal>
-
-            <Modal value={[modal, setModal]}>
-
-                <DateRange
-                    editableDateInputs={true}
-                    onChange={item => setState([item.selection])}
-                    minDate={addDays(new Date(), 0)}
-                    moveRangeOnFirstSelection={false}
-                    ranges={state}
-                    className={styles.date}
-                />
-                <button type='button' onClick={() => setModal(false)}
-                        className={`${styles.headerButton} ${styles.btnColorRed}`}>close
-                </button>
-            </Modal>
             <div className={styles.header}>
                 <div className={`${styles.headerContainer}  ${props.list ? styles.headerContainerMargin : ''} `}>
                     <div className={styles.headerList}>

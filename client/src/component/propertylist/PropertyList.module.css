@@ -19,6 +19,12 @@
     border-radius: .5rem;
     overflow: hidden;
 }
+@media screen and (max-width: 768px) {
+    .pListItem img{
+        width: 150px;
+    }
+
+}
 
 .pListTitle{
     font-weight: bold;

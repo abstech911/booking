@@ -139,7 +139,6 @@
         align-items: center;
         justify-content: flex-start;
         gap: 1rem;
-        width: 100%;
     }
 }
 
@@ -189,7 +188,8 @@
     flex-direction: column;
     gap: 1.5rem;
     justify-content: center;
-    margin: 1rem  0;
+    margin: 4rem 2rem;
+    width: 20rem;
 }
 .optionItem{
     display: flex;

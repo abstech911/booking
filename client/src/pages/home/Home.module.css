@@ -11,7 +11,10 @@
 }
 .homeTitle{
     align-self: flex-start;
-    margin: 0 2.5rem;
+    margin: auto;
+    max-width: 1024px;
+    display: block;
+    width: 100%;
 }
 @media screen and (max-width: 768px) {
     .homeTitle {
